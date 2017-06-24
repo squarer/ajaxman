@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       request: {
-        url: 'https://eits-comic.ga:1337/catalog',
+        url: 'https://eits-comic.ga:1337/catalog?limit=3',
         method: 'get'
       },
       response: {

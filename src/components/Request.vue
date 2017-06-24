@@ -24,7 +24,7 @@
       <div ref="headers">headers</div>
       <div ref="body">body</div>
       <div ref="url-params">
-        <UrlParams :url="value.url"></UrlParams>
+        <UrlParams :url="value.url" :setUrl="setUrl"></UrlParams>
       </div>
       <div ref="auth">auth</div>
     </div>
@@ -56,6 +56,11 @@
             value: 'delete'
           }
         ]
+      }
+    },
+    methods: {
+      setUrl (url) {
+        this.value.url = url
       }
     },
     components: {
