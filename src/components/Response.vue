@@ -1,6 +1,7 @@
 <template>
   <div class="shadow-1 res-wrapper">
-    <q-tabs :refs="$refs" class=" white" default-tab="data">
+    <span v-if="response.status != ''" :class="'label shadow-1 text-white '+ labelColorClass">{{ response.status }} {{ response.statusText }}</span>
+    <q-tabs :refs="$refs" class="white" default-tab="data">
       <q-tab name="data">
         Data
       </q-tab>
@@ -18,6 +19,25 @@
 
 <script>
   export default {
-    props: ['response']
+    props: ['response'],
+    computed: {
+      labelColorClass () {
+        return this.response.status === 200 ? 'bg-primary' : 'bg-red'
+      }
+    }
   }
 </script>
+
+<style scoped>
+span.label {
+  float: right;
+  margin-right: 10px;
+  height: 40px;
+}
+
+@media screen and (max-width: 560px) {
+  span.label {
+    margin-right: 0;
+  }
+}
+</style>
