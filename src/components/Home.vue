@@ -44,6 +44,7 @@ export default {
 
 <style>
 .req-wrapper, .res-wrapper {
+  background-color: #fff;
   margin: 0 auto;
   max-width: 800px;
   min-height: 200px;
