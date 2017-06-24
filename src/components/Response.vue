@@ -32,7 +32,21 @@
 .tab-target {
   max-height: 500px;
   overflow-y: auto;
+  padding-bottom: 0;
 }
+
+.tab-target::-webkit-scrollbar {
+  background-color: #ccc;
+  height: 8px;
+  width: 8px;
+}
+
+.tab-target::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 5px;
+  height: 30px;
+}
+
 span.label {
   position: absolute;
   right: 0;

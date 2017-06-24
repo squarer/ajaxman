@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-bottom: 50px;">
     <Toolbar></Toolbar>
     <div style="padding:0 16px;">
       <Request v-model="request" :send="send"></Request>
@@ -47,7 +47,7 @@ export default {
   margin: 0 auto;
   max-width: 800px;
   min-height: 200px;
-  padding: 20px 0;
+  padding-top: 20px;
   margin-bottom: 20px;
 }
 
