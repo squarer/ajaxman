@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ getParams }}
     <div class="params-wrapper" v-for="(param, index) in params" :key="param">
       <input @keyup="isLast(index) ? addParams($event) : null" class="params-key" :placeholder="isLast(index) ? 'new key' : null" v-model="param.key">
       <input @keyup="isLast(index) ? addParams($event) : null" class="params-value" :placeholder="isLast(index) ? 'value' : null" v-model="param.value">
@@ -12,9 +13,22 @@
 
 <script>
 export default {
+  props: ['url'],
   data () {
     return {
       params: [{ key: '', value: '' }]
+    }
+  },
+  computed: {
+    getParams () {
+      let params = (new URL(this.url)).searchParams
+      let newParams = []
+      for (let item of params) {
+        newParams.push({ key: item[0], value: item[1] })
+      }
+      if (newParams.length > 0) {
+        this.params = newParams
+      }
     }
   },
   methods: {

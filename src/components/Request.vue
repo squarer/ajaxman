@@ -24,7 +24,7 @@
       <div ref="headers">headers</div>
       <div ref="body">body</div>
       <div ref="url-params">
-        <UrlParams></UrlParams>
+        <UrlParams :url="value.url"></UrlParams>
       </div>
       <div ref="auth">auth</div>
     </div>
