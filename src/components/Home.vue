@@ -119,6 +119,15 @@ pre {
   white-space: pre-wrap;
 }
 
+.item {
+  height: 36px;
+  font-size: 13px;
+}
+
+.item > .item-content {
+  padding: 8px 0;
+}
+
 @media screen and (max-width: 840px) {
   input.url {
     max-width: 400px;
