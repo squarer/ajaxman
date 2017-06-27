@@ -43,7 +43,7 @@ import request from '../helper/request'
 export default {
   data () {
     return {
-      url: '',
+      url: 'https://eits-comic.ga:1337/catalog',
       method: 'get',
       methods: [
         {
