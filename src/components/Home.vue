@@ -8,7 +8,7 @@
           <input @keyup.enter="send()" class="url" v-model="url" placeholder="https://enter.request.url">
           <button style="margin-bottom: 5px;" class="primary outline" @click="send()">send</button>
         </div>
-        <q-tabs :refs="$refs" class="white" default-tab="body">
+        <q-tabs :refs="$refs" class="white shadow-bottom" default-tab="body">
           <q-tab name="headers">
             Headers
           </q-tab>
@@ -126,6 +126,10 @@ pre {
 
 .item > .item-content {
   padding: 8px 0;
+}
+
+.shadow-bottom {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.24);
 }
 
 @media screen and (max-width: 840px) {

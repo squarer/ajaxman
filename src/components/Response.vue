@@ -1,13 +1,13 @@
 <template>
   <div class="shadow-1 res-wrapper">
-    <span v-if="response.status != ''" :class="'label shadow-1 text-white '+ labelColorClass">{{ response.status }} {{ response.statusText }}</span>
-    <q-tabs :refs="$refs" class="white" default-tab="data">
+    <q-tabs :refs="$refs" class="white shadow-bottom" default-tab="data">
       <q-tab name="data">
         Data
       </q-tab>
       <q-tab name="headers">
         Headers
       </q-tab>
+      <span v-if="response.status != ''" :class="'label shadow-1 text-white '+ labelColorClass">{{ response.status }} {{ response.statusText }}</span>
     </q-tabs>
     <!-- Targets -->
     <div class="tab-target">
@@ -29,10 +29,23 @@
 </script>
 
 <style scoped>
+.tab-target {
+  max-height: 500px;
+  overflow-y: auto;
+}
 span.label {
-  float: right;
+  position: absolute;
+  right: 0;
   margin-right: 10px;
   height: 40px;
+}
+
+@media screen and (max-width: 920px) {
+  span.label {
+    position: initial;
+    flex: 0 1 auto;
+    margin-left: 10px;
+  }
 }
 
 @media screen and (max-width: 560px) {
