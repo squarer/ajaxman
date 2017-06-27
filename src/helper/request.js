@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
   send (context, method, url, options = null) {
     axios[method](url).then(response => {
-      context.response.data = response.data[0]
+      context.response.data = response.data
       context.response.headers = response.headers
       context.response.status = response.status
       context.response.statusText = response.statusText
