@@ -5,7 +5,7 @@
       <div class="shadow-1 req-wrapper" style="margin-top:40px;">
         <div style="text-align: center;">
           <q-select class="select" type="list" v-model="method" :options="methods"></q-select>
-          <input class="url" v-model="url" placeholder="https://enter.request.url">
+          <input @keyup.enter="send()" class="url" v-model="url" placeholder="https://enter.request.url">
           <button style="margin-bottom: 5px;" class="primary outline" @click="send()">send</button>
         </div>
         <q-tabs :refs="$refs" class="white" default-tab="body">
