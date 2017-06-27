@@ -2,34 +2,7 @@
   <div>
     <Toolbar></Toolbar>
     <div style="padding:0 16px;">
-      <div class="shadow-1 req-wrapper" style="margin-top:40px;">
-        <div style="text-align: center;">
-          <q-select class="select" type="list" v-model="method" :options="methods"></q-select>
-          <input @keyup.enter="send()" class="url" v-model="url" placeholder="https://enter.request.url">
-          <button style="margin-bottom: 5px;" class="primary outline" @click="send()">send</button>
-        </div>
-        <q-tabs :refs="$refs" class="white shadow-bottom" default-tab="body">
-          <q-tab name="headers">
-            Headers
-          </q-tab>
-          <q-tab name="body">
-            Body
-          </q-tab>
-          <q-tab name="url-params">
-            Url Params
-          </q-tab>
-          <q-tab name="auth">
-            Auth
-          </q-tab>
-        </q-tabs>
-        <!-- Targets -->
-        <div class="tab-target">
-          <div ref="headers">headers</div>
-          <div ref="body">body</div>
-          <div ref="url-params">url params</div>
-          <div ref="auth">auth</div>
-        </div>
-      </div>
+      <Request v-model="request" :send="send"></Request>
       <Response :response="response"></Response>
     </div>
   </div>
@@ -37,32 +10,17 @@
 
 <script>
 import Toolbar from './Toolbar'
+import Request from './Request'
 import Response from './Response'
 import request from '../helper/request'
 
 export default {
   data () {
     return {
-      url: 'https://eits-comic.ga:1337/catalog',
-      method: 'get',
-      methods: [
-        {
-          label: 'GET',
-          value: 'get'
-        },
-        {
-          label: 'POST',
-          value: 'post'
-        },
-        {
-          label: 'PUT',
-          value: 'put'
-        },
-        {
-          label: 'DELETE',
-          value: 'delete'
-        }
-      ],
+      request: {
+        url: 'https://eits-comic.ga:1337/catalog',
+        method: 'get'
+      },
       response: {
         status: '',
         statusText: '',
@@ -73,11 +31,12 @@ export default {
   },
   components: {
     Toolbar,
+    Request,
     Response
   },
   methods: {
     send () {
-      request.send(this, this.method, this.url)
+      request.send(this, this.request.method, this.request.url)
     }
   }
 }
