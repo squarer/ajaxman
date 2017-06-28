@@ -62,14 +62,6 @@ export default {
   padding: 6px 30px;
 }
 
-input.url {
-  max-width: 580px;
-  padding-left: 10px;
-  padding-bottom: 6px;
-  margin-left: 20px;
-  width: 100%;
-}
-
 .tab-target {
   padding: 20px;
 }
@@ -92,31 +84,7 @@ pre {
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.24);
 }
 
-@media screen and (max-width: 840px) {
-  input.url {
-    max-width: 400px;
-  }
-}
-
-@media screen and (max-width: 670px) {
-  input.url {
-    max-width: 300px;
-  }
-}
-
 @media screen and (max-width: 560px) {
-  input.url {
-    max-width: 100%;
-    margin-left: 0;
-    margin-top: 20px;
-  }
-  .select {
-    display: block;
-  }
-  button {
-    margin-top: 30px;
-    width: 100%;
-  }
   .req-wrapper, .res-wrapper {
     padding: 20px 16px;
   }

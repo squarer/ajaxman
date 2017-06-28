@@ -46,4 +46,14 @@ export default {
 .params-value {
   flex-grow: 2;
 }
+
+.params-wrapper > button {
+  padding-right: 0.5em;
+}
+
+@media screen and (max-width: 560px) {
+  .params-key, .params-value {
+    width: 75px;
+  }
+}
 </style>

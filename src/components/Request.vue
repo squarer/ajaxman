@@ -63,3 +63,40 @@
     }
   }
 </script>
+
+<style scoped>
+input.url {
+  max-width: 580px;
+  padding-left: 10px;
+  padding-bottom: 6px;
+  margin-left: 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 840px) {
+  input.url {
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  input.url {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  input.url {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .select {
+    display: block;
+  }
+  button {
+    margin-top: 30px;
+    width: 100%;
+  }
+}
+</style>
