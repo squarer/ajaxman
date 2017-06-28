@@ -23,13 +23,17 @@
     <div class="tab-target">
       <div ref="headers">headers</div>
       <div ref="body">body</div>
-      <div ref="url-params">url params</div>
+      <div ref="url-params">
+        <UrlParams></UrlParams>
+      </div>
       <div ref="auth">auth</div>
     </div>
   </div>
 </template>
 
 <script>
+  import UrlParams from './UrlParams'
+
   export default {
     props: ['value', 'send'],
     data () {
@@ -53,6 +57,9 @@
           }
         ]
       }
+    },
+    components: {
+      UrlParams
     }
   }
 </script>
