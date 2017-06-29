@@ -2,8 +2,8 @@
   <div>
     {{ updateParams }}
     <div class="params-wrapper" v-for="(param, index) in params" :key="index">
-      <input @keyup="updateUrl(index)" class="params-key" :placeholder="isLast(index) ? 'new key' : null" v-model="param.key">
-      <input @keyup="updateUrl(index)" class="params-value" :placeholder="isLast(index) ? 'value' : null" v-model="param.value">
+      <input @keyup="updateUrl(index, $event)" class="params-key" :placeholder="isLast(index) ? 'new key' : null" v-model="param.key">
+      <input @keyup="updateUrl(index, $event)" class="params-value" :placeholder="isLast(index) ? 'value' : null" v-model="param.value">
       <button :style="isLast(index) ? { visibility: 'hidden' } : null" @click="remove(index)" tabindex="-1">
         <i>remove_circle_outline</i>
       </button>
@@ -36,12 +36,12 @@ export default {
     }
   },
   methods: {
-    updateUrl (index) {
+    updateUrl (index, event) {
       let url = this.url
       url = url.substring(0, url.indexOf('?') + 1) + this.getQueryStringFromParamsArray(this.params.slice(0))
 
       this.setUrl(url)
-      if (this.isLast(index)) {
+      if (this.isLast(index) && event.target.value !== '') {
         this.addParams()
       }
     },
