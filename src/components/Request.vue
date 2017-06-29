@@ -5,7 +5,7 @@
       <input @keyup.enter="send()" class="url" v-model="value.url" placeholder="https://enter.request.url">
       <button style="margin-bottom: 5px;" class="primary outline" @click="send()">send</button>
     </div>
-    <q-tabs :refs="$refs" class="white shadow-bottom" default-tab="body">
+    <q-tabs :refs="$refs" class="white shadow-bottom" default-tab="url-params">
       <q-tab name="headers">
         Headers
       </q-tab>

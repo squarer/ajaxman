@@ -28,13 +28,7 @@ export default {
       }
 
       let params = this.getParamsArrayFromQueryString(queryString)
-      if (params.length > 0) {
-        let lastParam = params[params.length - 1]
-        if (lastParam.key !== '' || lastParam.value !== '') {
-          params.push({ key: '', value: '' })
-        }
-      }
-      else {
+      if (!this.hasTrailingParams(params)) {
         params.push({ key: '', value: '' })
       }
 
@@ -44,7 +38,7 @@ export default {
   methods: {
     updateUrl (index) {
       let url = this.url
-      url = url.substring(0, url.indexOf('?') + 1) + this.getQueryStringFromParamsArray(this.params)
+      url = url.substring(0, url.indexOf('?') + 1) + this.getQueryStringFromParamsArray(this.params.slice(0))
 
       this.setUrl(url)
       if (this.isLast(index)) {
@@ -62,6 +56,9 @@ export default {
       this.updateUrl(index)
     },
     getQueryStringFromParamsArray (params) {
+      if (this.hasTrailingParams(params)) {
+        params.pop()
+      }
       let queryString = ''
       for (let [index, param] of params.entries()) {
         if (index !== 0) {
@@ -80,6 +77,16 @@ export default {
       }
 
       return params
+    },
+    hasTrailingParams (array) {
+      if (array.length === 0) {
+        return false
+      }
+      let lastItem = array[array.length - 1]
+      if (lastItem.key === '' && lastItem.value === '') {
+        return true
+      }
+      return false
     }
   }
 }
