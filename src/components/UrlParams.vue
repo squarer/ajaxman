@@ -36,12 +36,23 @@ export default {
     }
   },
   methods: {
-    updateUrl (index, event) {
+    updateUrl (index, event = null) {
       let url = this.url
-      url = url.substring(0, url.indexOf('?') + 1) + this.getQueryStringFromParamsArray(this.params.slice(0))
+      let queryString = this.getQueryStringFromParamsArray(this.params.slice(0))
+      if (url.indexOf('?') === -1) {
+        if (queryString !== '') {
+          url += '?' + queryString
+        }
+      }
+      else if (queryString === '') {
+        url = url.substring(0, url.indexOf('?'))
+      }
+      else {
+        url = url.substring(0, url.indexOf('?') + 1) + this.getQueryStringFromParamsArray(this.params.slice(0))
+      }
 
       this.setUrl(url)
-      if (this.isLast(index) && event.target.value !== '') {
+      if (this.isLast(index) && event && event.target.value !== '') {
         this.addParams()
       }
     },
@@ -61,10 +72,13 @@ export default {
       }
       let queryString = ''
       for (let [index, param] of params.entries()) {
-        if (index !== 0) {
+        if (index !== 0 && (param.key !== '' || param.value !== '')) {
           queryString += '&'
         }
-        queryString += param.key + '=' + param.value
+        queryString += param.key
+        if (param.value !== '') {
+          queryString += '=' + param.value
+        }
       }
 
       return queryString
